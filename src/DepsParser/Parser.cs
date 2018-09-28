@@ -10,12 +10,13 @@ namespace DepsParser {
 
         public string GetLibraryVersion(string name) {
             var line = Content.Where(x => x.Contains(name + "/")).First();
-            return line.Trim()
+            return line
                 .Replace(name, "")
                 .Replace("/", "")
                 .Replace("{", "")
                 .Replace(":", "")
-                .Replace("\"", "");
+                .Replace("\"", "")
+                .Trim();
         }
 
         public static Parser Search(string dir, string filePattern) {
